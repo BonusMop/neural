@@ -52,9 +52,36 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(result.columns, 1)
         self.assertEqual(result.values[0][0],4)
         self.assertEqual(result.values[1][0],-12)
+    
+    def test_addThrowsWhenSizesDiffer(self):
+        # arrange
+        m1 = lam.Matrix(1,5)
+        m2 = lam.Matrix(5,1)
+        # act
+        # assert
+        with self.assertRaises(ValueError) as context:
+            m3 = m1 + m2
+        self.assertEqual(str(context.exception),"Dimensions of matrices must match in order to add")
 
-
-
+    def test_addTwoMatrices(self):
+        # arrange
+        m1 = lam.Matrix(3,2)
+        m1.values[0] = [1,2]
+        m1.values[1] = [3,4]
+        m1.values[2] = [5,6]
+        m2 = lam.Matrix(3,2)
+        m2.values[0] = [2,3]
+        m2.values[1] = [4,5]
+        m2.values[2] = [6,7]
+        # act
+        m3 = m1 + m2
+        # assert
+        self.assertEqual(m3.values[0][0],3)
+        self.assertEqual(m3.values[0][1],5)
+        self.assertEqual(m3.values[1][0],7)
+        self.assertEqual(m3.values[1][1],9)
+        self.assertEqual(m3.values[2][0],11)
+        self.assertEqual(m3.values[2][1],13)
 
 if __name__ == '__main__':
     unittest.main()

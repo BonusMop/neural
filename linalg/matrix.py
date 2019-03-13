@@ -26,3 +26,12 @@ class Matrix:
                 for k in range(self.columns):
                     result.values[i][j] += self._values[i][k]*other.values[k][j]
         return result
+
+    def __add__(self, other):
+        if (self.columns != other.columns or self.rows != other.rows):
+            raise ValueError("Dimensions of matrices must match in order to add")
+        result = Matrix(self.rows, self.columns)
+        for i in range(self.rows):
+            for j in range(self.columns):
+                result.values[i][j] = self.values[i][j] + other.values[i][j]
+        return result
