@@ -111,6 +111,15 @@ class TestMatrix(unittest.TestCase):
         result = -m
         # assert
         self.assertEqual(result.values[0], [-2,8,0])
+    
+    def test_reciprocal(self):
+        # arrange
+        m = lam.Matrix(1,3)
+        m.values[0] = [0.5, 2.0, 1.0]
+        # act
+        result = m.reciprocal()
+        # assert
+        self.assertEqual(result.values[0], [2.0, 0.5, 1.0])
 
 if __name__ == '__main__':
     unittest.main()

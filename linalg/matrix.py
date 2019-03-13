@@ -35,6 +35,13 @@ class Matrix:
             for j in range(self.columns):
                 result.values[i][j] = exp(self._values[i][j])
         return result
+    
+    def reciprocal(self):
+        result = Matrix(self.rows, self.columns)
+        for i in range(self.rows):
+            for j in range(self.columns):
+                result.values[i][j] = 1.0 / self._values[i][j]
+        return result
 
     def __add__(self, other):
         result = Matrix(self.rows, self.columns)
