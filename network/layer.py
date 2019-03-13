@@ -22,3 +22,6 @@ class Layer:
     @property
     def weights(self):
         return self._weights
+
+    def sigmoid(self, z):
+        return ((-z).exp() + 1).reciprocal()

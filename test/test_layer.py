@@ -1,5 +1,6 @@
 import unittest
 import network.layer as netl
+import linalg.matrix as lam
 
 class TestLayer(unittest.TestCase):
 
@@ -25,3 +26,15 @@ class TestLayer(unittest.TestCase):
         self.assertEqual(second_layer.biases.rows, second_size)
         self.assertEqual(second_layer.weights.columns, second_size)
         self.assertEqual(second_layer.weights.rows, first_size)
+    
+    def test_sigmoid(self):
+        # Arrange
+        l = netl.Layer(3)
+        z = lam.Matrix(1,3)
+        z.values[0] = [-4.0, 0.0, 2.5]
+        # Act
+        result = l.sigmoid(z)
+        # Assert
+        self.assertAlmostEqual(result.values[0][0], 0.0179, 3)
+        self.assertAlmostEqual(result.values[0][1], 0.5, 3)
+        self.assertAlmostEqual(result.values[0][2], 0.9241, 3)
