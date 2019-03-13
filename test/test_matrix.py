@@ -96,6 +96,17 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(result.values[0][1], exp(10))
         self.assertEqual(result.values[1][0], exp(-5))
         self.assertEqual(result.values[1][1], exp(0))
+    
+    def test_negate(self):
+        # arrange
+        m = lam.Matrix(1, 3)
+        m.values[0] = [2,-8,0]
+        # act
+        result = -m
+        # assert
+        self.assertEqual(result.values[0][0], -2)
+        self.assertEqual(result.values[0][1], 8)
+        self.assertEqual(result.values[0][2], 0)
 
 if __name__ == '__main__':
     unittest.main()
