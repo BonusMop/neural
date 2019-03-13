@@ -37,12 +37,17 @@ class Matrix:
         return result
 
     def __add__(self, other):
-        if (self.columns != other.columns or self.rows != other.rows):
-            raise ValueError("Dimensions of matrices must match in order to add")
         result = Matrix(self.rows, self.columns)
-        for i in range(self.rows):
-            for j in range(self.columns):
-                result.values[i][j] = self.values[i][j] + other.values[i][j]
+        try:
+            if (self.columns != other.columns or self.rows != other.rows):
+                raise ValueError("Dimensions of matrices must match in order to add")
+            for i in range(self.rows):
+                for j in range(self.columns):
+                    result.values[i][j] = self.values[i][j] + other.values[i][j]
+        except AttributeError:
+            for i in range(self.rows):
+                for j in range(self.columns):
+                    result.values[i][j] = self.values[i][j] + other
         return result
 
     def __neg__(self):

@@ -84,6 +84,15 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(m3.values[2][0],11)
         self.assertEqual(m3.values[2][1],13)
 
+    def test_addScalar(self):
+        # arrange
+        m = lam.Matrix(1,4)
+        m.values[0] = [0, 12, -1, -5]
+        # act
+        result = m + 2
+        # assert
+        self.assertEqual(result.values[0],[2,14,1,-3])
+
     def test_exponential(self):
         # arrange
         m = lam.Matrix(2,2)
