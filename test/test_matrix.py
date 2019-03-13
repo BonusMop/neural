@@ -77,12 +77,9 @@ class TestMatrix(unittest.TestCase):
         # act
         m3 = m1 + m2
         # assert
-        self.assertEqual(m3.values[0][0],3)
-        self.assertEqual(m3.values[0][1],5)
-        self.assertEqual(m3.values[1][0],7)
-        self.assertEqual(m3.values[1][1],9)
-        self.assertEqual(m3.values[2][0],11)
-        self.assertEqual(m3.values[2][1],13)
+        self.assertEqual(m3.values[0],[3,5])
+        self.assertEqual(m3.values[1],[7,9])
+        self.assertEqual(m3.values[2],[11,13])
 
     def test_addScalar(self):
         # arrange
@@ -113,9 +110,7 @@ class TestMatrix(unittest.TestCase):
         # act
         result = -m
         # assert
-        self.assertEqual(result.values[0][0], -2)
-        self.assertEqual(result.values[0][1], 8)
-        self.assertEqual(result.values[0][2], 0)
+        self.assertEqual(result.values[0], [-2,8,0])
 
 if __name__ == '__main__':
     unittest.main()
