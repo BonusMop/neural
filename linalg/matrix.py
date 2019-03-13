@@ -1,3 +1,5 @@
+from math import exp
+
 class Matrix:
    
     def __init__(self, rows, columns):
@@ -26,6 +28,14 @@ class Matrix:
                 for k in range(self.columns):
                     result.values[i][j] += self._values[i][k]*other.values[k][j]
         return result
+    
+    def exp(self):
+        result = Matrix(self.rows, self.columns)
+        for i in range(self.rows):
+            for j in range(self.columns):
+                result.values[i][j] = exp(self._values[i][j])
+        return result
+
 
     def __add__(self, other):
         if (self.columns != other.columns or self.rows != other.rows):

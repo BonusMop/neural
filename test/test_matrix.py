@@ -1,5 +1,6 @@
 import unittest
 import linalg.matrix as lam
+from math import exp
 
 class TestMatrix(unittest.TestCase):
 
@@ -82,6 +83,19 @@ class TestMatrix(unittest.TestCase):
         self.assertEqual(m3.values[1][1],9)
         self.assertEqual(m3.values[2][0],11)
         self.assertEqual(m3.values[2][1],13)
+
+    def test_exponential(self):
+        # arrange
+        m = lam.Matrix(2,2)
+        m.values[0] = [3,10]
+        m.values[1] = [-5,0]
+        # act
+        result = m.exp()
+        # assert
+        self.assertEqual(result.values[0][0], exp(3))
+        self.assertEqual(result.values[0][1], exp(10))
+        self.assertEqual(result.values[1][0], exp(-5))
+        self.assertEqual(result.values[1][1], exp(0))
 
 if __name__ == '__main__':
     unittest.main()
